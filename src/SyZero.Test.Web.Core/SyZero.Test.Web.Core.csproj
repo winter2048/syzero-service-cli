@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>SyZero.Test.Web.Core</AssemblyName>
+    <RootNamespace>SyZero.Test.Web.Core</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SYZERO\src\SyZero.Core\SyZero.AspNetCore\SyZero.AspNetCore.csproj" />
+    <ProjectReference Include="..\SyZero.Test.Application\SyZero.Test.Application.csproj" />
+    <ProjectReference Include="..\SyZero.Test.Repository\SyZero.Test.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
+
+
+

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SYZERO\src\SyZero.Core\SyZero.Web.Common\SyZero.Web.Common.csproj" />
+    <ProjectReference Include="..\SyZero.Test.Core\SyZero.Test.Core.csproj" />
+  </ItemGroup>
+  
+</Project>
+
+
+

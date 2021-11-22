@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SyZero.Test.Application</name>
+    </assembly>
+    <members>
+        <member name="M:SyZero.Test.Application.UploadAppService.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="file">文件</param>
+            <returns>
+            result
+            </returns>
+        </member>
+    </members>
+</doc>
