@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Template1.Template2.Repository</AssemblyName>
+    <RootNamespace>Template1.Template2.Repository</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Template1.Template2.Core\Template1.Template2.Core.csproj" />
+  </ItemGroup>
+
+</Project>
+

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Template1.Template2.Application</RootNamespace>
+    <AssemblyName>Template1.Template2.Application</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Template1.Template2.Application.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Template1.Template2.IApplication\Template1.Template2.IApplication.csproj" />
+    <ProjectReference Include="..\Template1.Template2.Repository\Template1.Template2.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Template1.Template2.Application.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+

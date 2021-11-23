@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Template1.Template2.Application</name>
+    </assembly>
+    <members>
+        <member name="M:Template1.Template2.Application.UploadAppService.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="file">文件</param>
+            <returns>
+            result
+            </returns>
+        </member>
+    </members>
+</doc>
