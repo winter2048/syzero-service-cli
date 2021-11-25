@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SYZERO\src\SyZero.Core\SyZero.AutoMapper\SyZero.AutoMapper.csproj" />
-    <ProjectReference Include="..\..\..\SYZERO\src\SyZero.Core\SyZero.EntityFrameworkCore\SyZero.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\syzero-core\src\SyZero.Core\SyZero.AutoMapper\SyZero.AutoMapper.csproj" />
   </ItemGroup>
 
 </Project>

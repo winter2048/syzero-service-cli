@@ -2,13 +2,26 @@
   "name": "syzero-service-cli",
   "version": "1.0.2",
   "description": "",
-  "main": "bin/run.cmd",
+  "main": "bin/Index.js",
+  "types": "bin/Index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc && node bin/Index.js"
   },
   "bin": {
     "syzero": "bin/run.cmd"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "unzip": "^0.1.11"
+  },
+  "keywords": [
+    "npm",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@types/unzip": "^0.1.1"
+  }
 }

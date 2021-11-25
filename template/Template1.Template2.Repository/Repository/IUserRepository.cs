@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SyZero.Dependency;
 using SyZero.Domain.Repository;
-using Template1.Template2.Core.Authorization.Users;
+using Template1.Template2.Core.Users;
 
 namespace Template1.Template2.Repository
 {

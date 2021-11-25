@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\syzero-core\src\SyZero.Core\SyZero.SqlSugar\SyZero.SqlSugar.csproj" />
     <ProjectReference Include="..\Template1.Template2.Core\Template1.Template2.Core.csproj" />
   </ItemGroup>
 
