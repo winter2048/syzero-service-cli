@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>syzero.test.Core</AssemblyName>
+    <RootNamespace>syzero.test.Core</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\syzero-core\src\SyZero.Core\SyZero.AutoMapper\SyZero.AutoMapper.csproj" />
+  </ItemGroup>
+
+</Project>
+

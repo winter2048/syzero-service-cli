@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>syzero.test.Application</RootNamespace>
+    <AssemblyName>syzero.test.Application</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>syzero.test.Application.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\syzero-core\src\SyZero.Core\SyZero.Web.Common\SyZero.Web.Common.csproj" />
+    <ProjectReference Include="..\syzero.test.IApplication\syzero.test.IApplication.csproj" />
+    <ProjectReference Include="..\syzero.test.Repository\syzero.test.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="syzero.test.Application.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+

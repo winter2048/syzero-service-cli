@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>syzero.test.Repository</AssemblyName>
+    <RootNamespace>syzero.test.Repository</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\syzero-core\src\SyZero.Core\SyZero.SqlSugar\SyZero.SqlSugar.csproj" />
+    <ProjectReference Include="..\syzero.test.Core\syzero.test.Core.csproj" />
+  </ItemGroup>
+
+</Project>
+
