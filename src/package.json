@@ -1,6 +1,6 @@
 {
   "name": "syzero-service-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "bin/Index.js",
   "types": "bin/Index.d.ts",
@@ -19,7 +19,8 @@
   },
   "keywords": [
     "npm",
-    "typescript"
+    "typescript",
+    "syzero"
   ],
   "devDependencies": {
     "@types/unzip": "^0.1.1"
