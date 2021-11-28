@@ -1,6 +1,6 @@
 {
   "name": "syzero-service-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "bin/Index.js",
   "types": "bin/Index.d.ts",
@@ -9,12 +9,18 @@
     "build": "tsc",
     "dev": "tsc && node bin/Index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winter-2022/syzero-service-cli.git"
+  },
   "bin": {
-    "syzero": "bin/run.cmd"
+    "syzero": "bin/Index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "*",
+    "graceful-fs": "^4.2.3",
     "unzip": "^0.1.11"
   },
   "keywords": [
@@ -24,5 +30,8 @@
   ],
   "devDependencies": {
     "@types/unzip": "^0.1.1"
+  },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
   }
 }
