@@ -17,7 +17,7 @@ x64/
 x86/
 build/
 bld/
-[Bb]in/
+template/*/[Bb]in/
 [Oo]bj/
 node_modules/
 
