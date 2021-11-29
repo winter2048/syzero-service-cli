@@ -1,5 +1,5 @@
 import * as readline from 'readline';
-import * as unzip from 'unzip';
+import * as compressing from 'compressing';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -22,7 +22,6 @@ export default class SyZeroServiceCli {
         console.log("开始创建 ...");
         //解压文件模板
         await this.unZip(path.join(__dirname, "template.bin"), this.projectName);
-        await this.sleep(2000);
         const files: string[] = [];
         const dirs: string[] = [];
         this.readFileList(this.projectName, files, dirs);
@@ -123,13 +122,7 @@ export default class SyZeroServiceCli {
     }
 
     public async unZip(path: string, dirName: string) {
-        return new Promise<void>((resolve, reject) => {
-            fs.createReadStream(path)
-                .pipe(unzip.Extract({ path: dirName }))
-                .on('finish', () => {
-                    resolve();
-                });
-        })
+        await compressing.zip.uncompress(path, dirName);
     }
 
     public async sleep(s:number) {

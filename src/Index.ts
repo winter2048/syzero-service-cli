@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import SyZeroServiceCli from './SyZeroServiceCli';
-
 function run(argv: string[]) {
     if (argv[0] === '-v' || argv[0] === '--version') {
         console.log('  version is 1.0.5');
