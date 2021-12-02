@@ -1,7 +1,7 @@
 {
   "name": "syzero-service-cli",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.6",
+  "description": "syzero服务脚手架",
   "main": "bin/Index.js",
   "types": "bin/Index.d.ts",
   "scripts": {
@@ -13,11 +13,24 @@
     "type": "git",
     "url": "https://github.com/winter-2022/syzero-service-cli.git"
   },
+  "bugs": {
+    "url": "https://github.com/winter-2022/syzero-service-cli/issues"
+  },
   "bin": {
     "syzero": "bin/Index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Winter",
+    "email": "522112669@qq.com",
+    "url": "http://blog.syzero.com/"
+  },
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://opensource.org/licenses/Apache-2.0"
+    }
+  ],
   "dependencies": {
     "@types/node": "*",
     "compressing": "^1.5.1",
@@ -26,7 +39,8 @@
   "keywords": [
     "npm",
     "typescript",
-    "syzero"
+    "syzero",
+    "cli"
   ],
   "devDependencies": {
   },
