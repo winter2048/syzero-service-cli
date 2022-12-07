@@ -6,7 +6,7 @@ using SyZero.SqlSugar.Repositories;
 
 namespace Template1.Template2.Repository
 {
-    public class RepositoryBase<TEntity> : SqlSugarRepository<DbContext,TEntity>
+    public class RepositoryBase<TEntity> : SqlSugarRepository<TEntity>
        where TEntity : class, IEntity, new()
     {
         public RepositoryBase(DbContext dbContext) : base(dbContext)

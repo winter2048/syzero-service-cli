@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SyZero;
 using SyZero.Domain.Repository;
 using SyZero.SqlSugar;
 
@@ -21,8 +22,7 @@ namespace Template1.Template2.Repository
             //注册仓储泛型
             builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope().PropertiesAutowired();
             ////注册持久化
-            builder.RegisterType<UnitOfWork<DbContext>>().As<IUnitOfWork>().InstancePerLifetimeScope().PropertiesAutowired();
-
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope().PropertiesAutowired();
         }
     }
 }
