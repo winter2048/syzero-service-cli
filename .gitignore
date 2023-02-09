@@ -20,6 +20,7 @@ bld/
 template/*/[Bb]in/
 [Oo]bj/
 node_modules/
+bin/
 
 # Visual Studio cache/options directory
 .vs/

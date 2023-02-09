@@ -15,17 +15,21 @@ export default class SyZeroServiceCli {
 
     public async start() {
         await this.init();
-        if (fs.existsSync(this.projectName) && fs.readdirSync(this.projectName).length > 0) {
-            console.log(this.projectName + "必须是空文件夹！！！");
+        const projectRootDirNew = `${this.nameSpace}/${this.projectName}`;
+        const projectRootDirOld = `${this.nameSpace}/template`;
+        if (fs.existsSync(projectRootDirOld) && fs.readdirSync(projectRootDirOld).length > 0) {
+            console.log(projectRootDirOld + "必须是空文件夹！！！");
             return;
         }
         console.log("开始创建 ...");
         //解压文件模板
-        await this.unZip(path.join(__dirname, "template.bin"), this.projectName);
+        await this.unZip(path.join(__dirname, "template.bin"), this.nameSpace);
         const files: string[] = [];
         const dirs: string[] = [];
-        this.readFileList(this.projectName, files, dirs);
+        this.readFileList(projectRootDirOld, files, dirs);
         const typeList = [".sln", ".cs", ".csproj", ".xml", ".user", ".bat"];
+
+        //1.修改项目文件名称
         files.forEach(filePath => {
             //处理项目文件
             const fileExt = path.extname(filePath);
@@ -64,14 +68,17 @@ export default class SyZeroServiceCli {
             }
         });
 
-        //修改文件夹名称
+        //2.修改项目文件夹名称
         dirs.forEach(dir => {
             if (fs.existsSync(dir)) {
-                fs.renameSync(dir, path.join(path.dirname(dir), path.basename(dir).replace("Template2", this.projectName).replace("Template1", this.nameSpace)));
+                fs.renameSync(dir, path.join(path.dirname(dir), path.basename(dir).replace("Template2", this.projectName).replace("Template1", this.nameSpace).replace("template", this.projectName)));
             }
         });
 
-        this.readFileList(this.projectName, files, dirs);
+        //3.修改根目录名称
+        fs.renameSync(projectRootDirOld, projectRootDirNew);
+
+        this.readFileList(projectRootDirNew, files, dirs);
         files.forEach(file =>  {
             console.log(file);
         });
@@ -123,6 +130,10 @@ export default class SyZeroServiceCli {
 
     public async unZip(path: string, dirName: string) {
         await compressing.zip.uncompress(path, dirName);
+    }
+
+    public async zip(path: string, dirName: string) {
+        await compressing.zip.compressDir(path, dirName);
     }
 
     public async sleep(s:number) {

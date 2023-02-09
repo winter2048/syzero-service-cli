@@ -5,9 +5,9 @@
   "main": "bin/Index.js",
   "types": "bin/Index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "dev": "tsc && node bin/Index.js"
+    "build": "tsc && node bin/Index.js -b",
+    "dev": "npm run build && node bin/Index.js",
+    "start": "node bin/Index.js"
   },
   "repository": {
     "type": "git",
@@ -32,9 +32,10 @@
     }
   ],
   "dependencies": {
-    "@types/node": "*",
-    "compressing": "^1.5.1",
-    "graceful-fs": "^4.2.2"
+    "typescript":"3.2.2",
+    "@types/node": "12.12.54",
+    "compressing": "1.5.1",
+    "graceful-fs": "4.2.2"
   },
   "keywords": [
     "npm",
