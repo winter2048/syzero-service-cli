@@ -17,8 +17,8 @@ export default class SyZeroServiceCli {
         await this.init();
         const projectRootDirNew = `${this.nameSpace}/${this.projectName}`;
         const projectRootDirOld = `${this.nameSpace}/template`;
-        if (fs.existsSync(projectRootDirOld) && fs.readdirSync(projectRootDirOld).length > 0) {
-            console.log(projectRootDirOld + "必须是空文件夹！！！");
+        if (fs.existsSync(projectRootDirNew) && fs.readdirSync(projectRootDirNew).length > 0) {
+            console.log(path.join(process.cwd(), projectRootDirNew) + " 必须是空文件夹！！！");
             return;
         }
         console.log("开始创建 ...");
