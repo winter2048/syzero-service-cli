@@ -44,8 +44,8 @@ export default class SyZeroServiceCli {
             }
             //处理k8s yaml文件
             if (fileName == "template1-template2-service.yaml") {
-                this.replaceText(filePath, "Template2", this.projectName.toLowerCase());
-                this.replaceText(filePath, "Template1", this.nameSpace.toLowerCase());
+                this.replaceText(filePath, "template2", this.projectName.toLowerCase());
+                this.replaceText(filePath, "template1", this.nameSpace.toLowerCase());
                 fs.renameSync(filePath, path.join(path.dirname(filePath), fileName.replace("template2", this.projectName.toLowerCase()).replace("template1", this.nameSpace.toLowerCase())));
 
             }
