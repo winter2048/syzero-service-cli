@@ -28,6 +28,7 @@ jobs:
         token: ${{ secrets.NPM_AUTH_TOKEN }}
 
     - name: Get Release Note
+      if: steps.publish.outputs.type != 'none'
       id: get_releasenote
       run: .\.github\workflows\script\get-releasenote.ps1 -version ${{ steps.publish.outputs.version }}
       shell: powershell
@@ -44,6 +45,6 @@ jobs:
       if: steps.publish.outputs.type != 'none'
       with:
         bodyFile: 'ReleaseNote.md'
-        token: ${{ env.GB_NUGET_TOKEN }}
+        token: ${{ secrets.GB_NUGET_TOKEN }}
         prerelease: false
         tag: v${{ steps.publish.outputs.version }}
