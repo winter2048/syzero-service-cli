@@ -21,7 +21,29 @@ jobs:
         npm install
         npm run build
         
-    - name: Publish
+    - id: publish
+      name: Publish
       uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_AUTH_TOKEN }}
+
+    - name: Get Release Note
+      id: get_releasenote
+      run: .\.github\workflows\script\get-releasenote.ps1 -version ${{ steps.publish.outputs.version }}
+      shell: powershell
+
+    - name: Tag commit
+      if: steps.publish.outputs.type != 'none'
+      uses: tvdias/github-tagger@v0.0.1
+      with:
+        repo-token: ${{ secrets.GB_NUGET_TOKEN }}
+        tag: v${{ steps.publish.outputs.version }}
+
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      if: steps.publish.outputs.type != 'none'
+      with:
+        bodyFile: 'ReleaseNote.md'
+        token: ${{ env.GB_NUGET_TOKEN }}
+        prerelease: false
+        tag: v${{ steps.publish.outputs.version }}
