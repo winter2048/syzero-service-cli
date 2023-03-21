@@ -26,11 +26,11 @@ if ($patch -eq "*") {
     $tags = $remote_refs | Where-Object { $_.ToLower().Contains('refs/tags/v1.0.') }
     $latest_tag = $tags | Sort-Object -Property @{ Expression = { [version]::new($_.Split('/v', [StringSplitOptions]::RemoveEmptyEntries)[1]) } } -Descending | Select-Object -First 1
     $latest_patch = $latest_tag.Split(".")[-1]
-    if ($tag -eq "dev") {
-        $patch = $latest_patch
-    }else {
-        $patch = [int]$latest_patch + 1
-    }
+    $patch = [int]$latest_patch + 1
+}
+
+if ($tag -eq "dev") {
+    $patch = $latest_patch
 }
 
 $ProductMajorVersion = $major
