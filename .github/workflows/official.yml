@@ -66,8 +66,16 @@ jobs:
         with:
           name: build
 
-      - id: publish
-        name: Publish
+      - name: Publish (latest)
+        if: github.ref_name == 'master'
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
+          tag: latest
+
+      - name: Publish (${{ github.ref_name }})
+        if: github.ref_name != 'master'
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          tag: ${{ github.ref_name }}
