@@ -54,7 +54,7 @@ jobs:
       with:
         bodyFile: 'ReleaseNote.md'
         token: ${{ secrets.GB_NUGET_TOKEN }}
-        prerelease: false
+        prerelease: ${{ github.ref_name != 'master' }}
         tag: v${{ env.BUILD_BUILDNUMBER }}
 
   publish_package:
