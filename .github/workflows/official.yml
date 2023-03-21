@@ -2,7 +2,7 @@ name: Official
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
 
 jobs:
   build:
@@ -10,6 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Setup BuildNumber
+      id: setup_buildnumber
+      run: .\.github\workflows\script\set-buildnumber.ps1 -refName ${{ github.ref_name }}
+      shell: powershell
 
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
@@ -19,32 +24,50 @@ jobs:
     - name: Build
       run: |
         npm install
+        npm version ${{ env.BUILD_BUILDNUMBER }} --no-git-tag-version
         npm run build
-        
-    - id: publish
-      name: Publish
-      uses: JS-DevTools/npm-publish@v1
+
+    - name: Upload package
+      uses: actions/upload-artifact@v3
       with:
-        token: ${{ secrets.NPM_AUTH_TOKEN }}
+        name: build
+        path: |
+          ./*
+          !./node_modules/*
+          !./.github/*
+          !./src/*
+          !./template/*
 
     - name: Get Release Note
-      if: steps.publish.outputs.type != 'none'
       id: get_releasenote
-      run: .\.github\workflows\script\get-releasenote.ps1 -version ${{ steps.publish.outputs.version }}
+      run: .\.github\workflows\script\get-releasenote.ps1 -version ${{ env.BUILD_BUILDNUMBER }}
       shell: powershell
 
     - name: Tag commit
-      if: steps.publish.outputs.type != 'none'
       uses: tvdias/github-tagger@v0.0.1
       with:
         repo-token: ${{ secrets.GB_NUGET_TOKEN }}
-        tag: v${{ steps.publish.outputs.version }}
+        tag: v${{ env.BUILD_BUILDNUMBER }}
 
     - name: Create Release
       uses: ncipollo/release-action@v1
-      if: steps.publish.outputs.type != 'none'
       with:
         bodyFile: 'ReleaseNote.md'
         token: ${{ secrets.GB_NUGET_TOKEN }}
         prerelease: false
-        tag: v${{ steps.publish.outputs.version }}
+        tag: v${{ env.BUILD_BUILDNUMBER }}
+
+  publish_package:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
+      - id: publish
+        name: Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
